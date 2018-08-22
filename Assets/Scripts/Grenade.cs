@@ -9,7 +9,6 @@ public class Grenade : MonoBehaviour, IPooledObject
     public GameObject explosionPrefab;
     public Rigidbody rb;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
