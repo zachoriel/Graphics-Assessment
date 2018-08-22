@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Postprocessing.Runtime", "Unity.Postprocessing.Runtime.csproj", "{49FCAFB7-7D0A-B3F6-2171-B4248A94EC21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Postprocessing.Editor", "Unity.Postprocessing.Editor.csproj", "{CBEC4DCB-1B2B-E03B-0387-393C59967E8B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Particle-Systems-Lesson", "Particle-Systems-Lesson.csproj", "{A145CEB5-DAF6-830D-2849-AA376D47ADCF}"
 EndProject
 Global
@@ -9,6 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49FCAFB7-7D0A-B3F6-2171-B4248A94EC21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49FCAFB7-7D0A-B3F6-2171-B4248A94EC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49FCAFB7-7D0A-B3F6-2171-B4248A94EC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49FCAFB7-7D0A-B3F6-2171-B4248A94EC21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBEC4DCB-1B2B-E03B-0387-393C59967E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBEC4DCB-1B2B-E03B-0387-393C59967E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBEC4DCB-1B2B-E03B-0387-393C59967E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBEC4DCB-1B2B-E03B-0387-393C59967E8B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A145CEB5-DAF6-830D-2849-AA376D47ADCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A145CEB5-DAF6-830D-2849-AA376D47ADCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A145CEB5-DAF6-830D-2849-AA376D47ADCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
