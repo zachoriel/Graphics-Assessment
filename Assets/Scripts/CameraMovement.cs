@@ -39,12 +39,12 @@ public class CameraMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
         {
-            dir.y += 1.0f;
+            dir.y -= 1.0f;
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            dir.y -= 1.0f;
+            dir.y += 1.0f;
         }
 
         dir.Normalize();
