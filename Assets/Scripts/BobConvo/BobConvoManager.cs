@@ -30,7 +30,7 @@ public class BobConvoManager : MonoBehaviour // I am so sorry for this
     public TextMeshProUGUI pressToContinue;
     public Text timerText;
 
-    [HideInInspector]
+    //[HideInInspector]
     public float crashTimer = 10f;
 
     // Use this for initialization
@@ -148,6 +148,6 @@ public class BobConvoManager : MonoBehaviour // I am so sorry for this
 
         timerText.enabled = true;
         crashTimer -= 1 * Time.deltaTime;
-        crashTimer = Mathf.Clamp(crashTimer, 0, 10);
+        crashTimer = Mathf.Clamp(crashTimer, 0, 1000000);
     }
 }
