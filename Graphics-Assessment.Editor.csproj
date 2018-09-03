@@ -370,9 +370,6 @@
     <Reference Include="Boo.Lang">
       <HintPath>Library\UnityAssemblies\Boo.Lang.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Facebook.Unity.Settings">
       <HintPath>Library\FacebookSDK\Facebook.Unity.Settings.dll</HintPath>
     </Reference>
@@ -392,41 +389,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Attributes\DecoratorAttribute.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Attributes\PostProcessEditorAttribute.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\BaseEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Decorators\AttributeDecorator.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Decorators\Decorators.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Decorators\TrackballDecorator.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\EffectListEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\AmbientOcclusionEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\AutoExposureEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\BloomEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\ChromaticAberrationEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\ColorGradingEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\DefaultPostProcessEffectEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\DepthOfFieldEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\LensDistortionEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\ScreenSpaceReflectionsEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Effects\VignetteEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\PostProcessDebugEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\PostProcessEffectBaseEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\PostProcessEffectEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\PostProcessLayerEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\PostProcessProfileEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\PostProcessVolumeEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Tools\CubeLutAssetFactory.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Tools\CubeLutAssetImporter.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Tools\DefineSetter.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Tools\ProfileFactory.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Tools\ResourceAssetFactory.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Tools\VolumeFactory.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Utils\CurveEditor.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Utils\EditorUtilities.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Utils\GlobalSettings.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Utils\PostProcessShaderIncludePath.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Utils\SerializedParameterOverride.cs" />
-    <Compile Include="Assets\PostProcessing-2\PostProcessing\Editor\Utils\Styling.cs" />
+    <Compile Include="Packages\com.unity.standardevents\Editor\Importer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\PostProcessing-2\PostProcessing\Editor\Unity.Postprocessing.Editor.asmdef" />
@@ -494,6 +457,30 @@
     <None Include="Assets\PostProcessing-2\PostProcessing\Shaders\Sampling.hlsl" />
     <None Include="Assets\PostProcessing-2\PostProcessing\Shaders\StdLib.hlsl" />
     <None Include="Assets\PostProcessing-2\PostProcessing\Shaders\xRLib.hlsl" />
+    <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\unity-ui-extensions\Shaders\UI Particle Add.shader" />
+    <None Include="Assets\unity-ui-extensions\Shaders\UI Particle Alpha Blend.shader" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />

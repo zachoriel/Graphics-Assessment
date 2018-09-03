@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BobTrigger : MonoBehaviour  // I am so sorry for this
+public class BobTrigger : MonoBehaviour  
 {
     public Canvas bobsCanvas;
 
@@ -65,6 +65,8 @@ public class BobTrigger : MonoBehaviour  // I am so sorry for this
     {
         if (other.gameObject.tag == playerTag && hasTalkedToBob == false)
         {
+             
+
             bobsCanvas.enabled = true;
 
             intro1.enabled = true;
