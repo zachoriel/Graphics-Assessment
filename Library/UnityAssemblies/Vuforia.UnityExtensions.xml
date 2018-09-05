@@ -43,10 +43,24 @@
             are in world coordinate system and use a physical unit (meter).
             </summary>
     </member>
-    <member name="M:Vuforia.PositionalDeviceTracker.CreateMidAirAnchor(System.String,UnityEngine.Transform)">
+    <member name="M:Vuforia.PositionalDeviceTracker.Reset">
+      <summary>
+            Reset the tracker
+            On some platforms a new world coordinate system may be created
+            with the device's current position and orientation as the origin.
+            On some platforms the underlying Vuforia Fusion provider may also be reset.
+            Any internal data will be destroyed.
+            All created anchors will be destroyed. It is recommended to call ResetAnchors() afterwards.
+            <returns>true if the positional device tracker correctly reset</returns></summary>
+    </member>
+    <member name="M:Vuforia.PositionalDeviceTracker.CreateMidAirAnchor(System.String,UnityEngine.Vector3,UnityEngine.Quaternion)">
       <summary>
             Creates an Anchor Trackable for MidAir using the Transform of the pose (position/rotation) where it should be anchored.
             </summary>
+      <remarks>
+            When using VUFORIA_SENSOR_FUSION, Anchors created with this method are not guaranteed to receive any
+            further position updates after the device tracker recovers from a limited tracking state.
+            </remarks>
       <param name="name">The logical name of the anchor. This must be unique among all created anchors.</param>
       <param name="transform">The transform of the pose at which the anchor will be created</param>
       <returns>Anchor that can be used to configure an AnchorBehaviour</returns>
@@ -333,18 +347,6 @@
       <summary>
             Define which configuration is used for rendering on see-through eyewear.
             This value is only used when eyewear type is set to optical see-through.
-            </summary>
-    </member>
-    <member name="M:Vuforia.DigitalEyewearARController.EnableAutomaticFocusPointSelection(System.Boolean)">
-      <summary>
-            May be removed in future Vuforia versions!
-            This method can be used to toggle automatic setting of the focus plane on HoloLens.
-            It should only be called after Vuforia has started (e.g. VuforiaStartedCallback)
-            By default, this is set to true, and Vuforia will automatically set the focus plane to the last
-            detected target.
-            However, if an the focus plane should be set to a hologram significantly offset from a target,
-            this method should be used to disable automatic focus plane setting and it should be done from 
-            application code instead
             </summary>
     </member>
     <member name="M:Vuforia.DigitalEyewearARController.EnableWorldAnchorUsage(System.Boolean)">
@@ -716,11 +718,6 @@
             1 Unity unit equals 1 meter.
             </summary>
     </member>
-    <member name="M:Vuforia.IHoloLensApiAbstraction.SetFocusPoint(UnityEngine.Vector3,UnityEngine.Vector3)">
-      <summary>
-            Sets the focus point, stablizing holograms in that area
-            </summary>
-    </member>
     <member name="M:Vuforia.IHoloLensApiAbstraction.SetWorldAnchor(Vuforia.TrackableBehaviour,Vuforia.VuforiaManager.TrackableIdPair)">
       <summary>
             Sets a world anchor on the game object of the given behaviour
@@ -895,13 +892,92 @@
             A utility behaviour to disable rendering of a game object at run time.
             </summary>
     </member>
-    <member name="T:Vuforia.IEditDataSetBehaviour">
+    <member name="T:Vuforia.FusionProviderType">
       <summary>
-            Interface for editing some properties of data set trackables.
+             Used when calling setAllowedFusionProviders() and getActiveFusionProvider()
+            
+             Vuforia Fusion is a capability, introduced with Vuforia 7, that is designed to provide
+             the best possible AR experience on a wide range of devices. Fusion solves the problem
+             of fragmentation in AR-enabling technologies, including cameras, sensors, chipsets,
+             and software frameworks such as ARKit, ARCore and Windows Holographic. It senses the
+             capabilities of the underlying device and fuses them with Vuforia features, allowing
+             developers to rely on a single Vuforia API for an optimal AR experience.
+            
+             The FusionProviderType enums provide advanced developers with a way to
+             control which technologies Fusion will use. Developers using these APIs should
+             be aware:
+               - of the functionality provided by the underlying platforms
+               - of the technology involved in enabling AR
+               - of the robustness of the various options
+               - that features such as GroundPlane will cease to work. ModelTargets will
+                 operate in a less robust manner if VUFORIA_VISION_ONLY is selected.
+            
+             The enum values are bit-fields, except INVALID_OPERATION, to be combined using
+             using the 'or' operation, and passed to setAllowedFusionProviders().
+             </summary>
+    </member>
+    <member name="F:Vuforia.FusionProviderType.INVALID_OPERATION">
+      <summary>
+            An invalid call has been made
+            
+            This value is returned when making a call to any of the FusionProvider
+            functions at an invalid time. It should not be used as part of setting
+            the allowed Fusion provider.
             </summary>
-            These properties should be edited with care at runtime. It is 
-            necessary to define them right after Vuforia has started.
-        </member>
+    </member>
+    <member name="F:Vuforia.FusionProviderType.VUFORIA_VISION_ONLY">
+      <summary>
+            Vision based tracking only
+            
+            Please note that not all Vuforia features are supported when using this
+            provider. See setAllowedFusionProviders() for more information.
+            </summary>
+    </member>
+    <member name="F:Vuforia.FusionProviderType.VUFORIA_SENSOR_FUSION">
+      <summary>
+            Use the Vuforia provided sensor fusion.
+            
+            Vuforia will try to make use of camera and IMU information to create a
+            tracking experience that, when compared to VUFORIA_VISION_ONLY,
+            is more robust to erratic motions and featureless environments
+            </summary>
+    </member>
+    <member name="F:Vuforia.FusionProviderType.PLATFORM_SENSOR_FUSION">
+      <summary>
+             Use the Platform-provided technology for Fusion
+            
+             Vuforia will try to make use of tracking services offered by the underlying
+             platfrom. Examples of this include ARKit on iOS, ARCore on Android, or
+             Windows Holographic on UWP.
+             </summary>
+    </member>
+    <member name="F:Vuforia.FusionProviderType.ALL">
+      <summary>
+            Directs Fusion to automatically select the best provider
+            
+            This is the default and directy Vuforia to select the best technology
+            available on the current device for Vuforia Fusion.
+            </summary>
+    </member>
+    <member name="F:Vuforia.FusionProviderType.OPTIMIZE_IMAGE_TARGETS_AND_VUMARKS">
+      <summary>
+            Optimize Fusion for use with Image Targets and VuMarks
+            
+            This mode is for applications using ImageTargets, CylinderTargets,
+            MultiTargets, ObjectTargets, VuMarks and UserDefinedTargets without
+            requiring usage of ModelTargets or SmartTerrain.
+            If the application was previously using the legacy ET tracking API with
+            your targets  this is the recommended setting.
+            </summary>
+    </member>
+    <member name="F:Vuforia.FusionProviderType.OPTIMIZE_MODEL_TARGETS_AND_SMART_TERRAIN">
+      <summary>
+             Optimize Fusion for use with Model Targets and SmartTerrain
+            
+             This mode is for applications that want to make use of Model Targets or
+             Smart Terrain.
+             </summary>
+    </member>
     <member name="T:Vuforia.MixedRealityController">
       <summary>
             The MixedRealityController provides a very simply interface to switch between different mixed reality modes.
@@ -1275,6 +1351,11 @@
     <member name="P:Vuforia.CameraDevice.Instance">
       <summary>
             Returns an instance of a CameraDevice (thread safe)
+            </summary>
+    </member>
+    <member name="M:Vuforia.CameraDevice.Init">
+      <summary>
+            Initializes the camera.
             </summary>
     </member>
     <member name="M:Vuforia.CameraDevice.Init(Vuforia.CameraDevice.CameraDirection)">
@@ -1725,6 +1806,11 @@
             Whether the video background image is mirrored horizontally
             </summary>
     </member>
+    <member name="P:Vuforia.VuforiaConfiguration.GenericVuforiaConfiguration.Version">
+      <summary>
+            Version of the Vuforia Unity Extension
+            </summary>
+    </member>
     <member name="P:Vuforia.VuforiaConfiguration.VideoBackgroundConfiguration.ClippingMode">
       <summary>
             Define type of clipping rendering beyond the video background
@@ -1779,6 +1865,14 @@
       <summary>
             A custom correction offset is used for the model correction.
             This is only used when <see cref="P:Vuforia.VuforiaConfiguration.DeviceTrackerConfiguration.ModelTransformEnabled" /> is true.
+            </summary>
+    </member>
+    <member name="P:Vuforia.VuforiaConfiguration.DeviceTrackerConfiguration.FusionMode">
+      <summary>
+            Specifies which providers Vuforia Fusion is allowed to select from
+             
+            providerTypes is a single value created by or'ing together the desired
+            FusionProviderType values.
             </summary>
     </member>
     <member name="P:Vuforia.VuforiaConfiguration.Instance">
@@ -2228,16 +2322,25 @@
     <member name="M:Vuforia.ObjectTarget.StartExtendedTracking">
       <summary>
             Start extended tracking. The Target can be tracked although it is not visible.
+            Extended tracking can't be used when device tracker is enabled.
+            DEPRECATED: This API has been deprecated. 
+            Please use DeviceTracker for similar extended tracking functionality
             </summary>
     </member>
     <member name="M:Vuforia.ObjectTarget.StopExtendedTracking">
       <summary>
             Stop extended tracking. Target will only be tracked when it is visible.
+            Extended tracking can't be used when device tracker is enabled.
+            DEPRECATED: This API has been deprecated. 
+            Please use DeviceTracker for similar extended tracking functionality
             </summary>
     </member>
     <member name="M:Vuforia.ObjectTarget.IsExtendedTrackingStarted">
       <summary>
             Query if extended tracking is started.
+            Extended tracking can't be used when device tracker is enabled. 
+            DEPRECATED: This API has been deprecated. 
+            Please use DeviceTracker for similar extended tracking functionality
             </summary>
     </member>
     <member name="M:Vuforia.ObjectTarget.GetSize">
@@ -2806,9 +2909,12 @@
             Enables/disables persistent extended tracking
             In persistent extended tracking mode, the environment map will only
             ever be reset when the developer calls resetExtendedTracking().
+            Persistent extended tracking can't be used when device tracker is enabled.
             This function will return true if persistent extended tracking
             was set successfully (or was already set to the specified value)
             and false otherwise.
+            DEPRECATED: This API has been deprecated. 
+            Please use DeviceTracker for similar extended tracking functionality
             </summary>
     </member>
     <member name="M:Vuforia.ObjectTracker.ResetExtendedTracking">
@@ -2816,8 +2922,11 @@
             Resets environment map for extended tracking
             Environment map can only be reset by the developer if persistent
             extended tracking is enabled and if the tracker is stopped.
+            Reset extended tracking can't be used when device tracker is enabled.
             This function will return true if environment map was reset
             successfully and false otherwise.
+            DEPRECATED: This API has been deprecated. 
+            Please use DeviceTracker for similar extended tracking functionality
             </summary>
     </member>
     <member name="T:Vuforia.MultiTarget">
@@ -2933,15 +3042,9 @@
             center (world center changes during runtime).
             </summary>
     </member>
-    <member name="F:Vuforia.VuforiaARController.WorldCenterMode.CAMERA">
+    <member name="F:Vuforia.VuforiaARController.WorldCenterMode.DEVICE">
       <summary>
-            Do not define a world center but only move Trackables with respect
-            to a fixed camera.
-            </summary>
-    </member>
-    <member name="F:Vuforia.VuforiaARController.WorldCenterMode.DEVICE_TRACKING">
-      <summary>
-            VR-mode: the world center is defined by device tracking
+            The device/camera is considered the world center, trackables are positioned with respect to it.
             </summary>
     </member>
     <member name="P:Vuforia.VuforiaARController.WorldCenterModeSetting">
@@ -2972,11 +3075,24 @@
             If Vuforia has started successfully
             </summary>
     </member>
+    <member name="M:Vuforia.VuforiaARController.RegisterBeforeVuforiaTrackersInitializedCallback(System.Action)">
+      <summary>
+            Register for a callback that is invoked even before Vuforia has initialized the trackers.
+            This should be used in particular when override the fusion mode in the configuration.
+            Should be called from an Awake() method to not miss the exact callback time between the two.
+            More than one callback can be registered.
+            </summary>
+    </member>
     <member name="M:Vuforia.VuforiaARController.RegisterVuforiaInitializedCallback(System.Action)">
       <summary>
             Register for a callback that is invoked after Vuforia has initialized and before the camera has started.
             Should be called from an Awake() method to not miss the exact callback time between the two.
             More than one callback can be registered.
+            </summary>
+    </member>
+    <member name="M:Vuforia.VuforiaARController.UnregisterBeforeVuforiaTrackersInitializedCallback(System.Action)">
+      <summary>
+            Unregister a previously registered callback.
             </summary>
     </member>
     <member name="M:Vuforia.VuforiaARController.UnregisterVuforiaInitializedCallback(System.Action)">
@@ -3439,6 +3555,30 @@
     <member name="M:Vuforia.VuforiaRuntimeUtilities.MatrixIsNaN(UnityEngine.Matrix4x4)">
       <summary>
             Check if a matrix is NaN. return true if any element is NaN, false otherwise.
+            </summary>
+    </member>
+    <member name="M:Vuforia.VuforiaRuntimeUtilities.SetAllowedFusionProviders(Vuforia.FusionProviderType)">
+      <summary>
+            Specifies which providers Vuforia Fusion is allowed to select from
+            
+            This function must be called before initializing Vuforia. If the call is successful,
+            it returns the value of providerTypes which was passed in.
+            
+            If called after initializing Vuforia, the function returns INVALID_OPERATION.
+            
+            providerTypes is a single value created by or'ing together the desired
+            FusionProviderType enum values.
+            
+            Note: The enum value INVALID_OPERATION should not be used when setting up
+            the providerTypes.
+            </summary>
+    </member>
+    <member name="M:Vuforia.VuforiaRuntimeUtilities.GetActiveFusionProvider">
+      <summary>
+            Returns which provider Vuforia Fusion has selected to use
+            
+            This function must be called after initializing Vuforia. If called before
+            initializing Vuforia, the function returns INVALID_OPERATION.
             </summary>
     </member>
     <member name="T:Vuforia.SurfaceUtilities">

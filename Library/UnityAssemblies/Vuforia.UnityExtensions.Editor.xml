@@ -4911,11 +4911,6 @@
             Get all behaviours that are edited by the serialized object
             </summary>
     </member>
-    <member name="P:Vuforia.EditorClasses.SerializedDataSetTrackable.ExtendedTracking">
-      <summary>
-            Defines whether extended tracking should be enabled for this target
-            </summary>
-    </member>
     <member name="M:Vuforia.EditorClasses.SerializedDataSetTrackable.GetDataSetName">
       <summary>
             The name of the data set the Trackable belongs to.

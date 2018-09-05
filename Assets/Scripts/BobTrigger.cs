@@ -31,7 +31,7 @@ public class BobTrigger : MonoBehaviour
     public TextMeshProUGUI diss;
     public TextMeshProUGUI pressToContinue;
 
-    string playerTag = "MainCamera";
+    string playerTag = "Player";
     bool hasTalkedToBob, pesteringBob;
     int pesterCount = 0;
 

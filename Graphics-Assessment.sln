@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics-Assessment", "Graphics-Assessment.csproj", "{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics-Assessment", "Graphics-Assessment.csproj", "{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics-Assessment", "Graphics-Assessment.csproj", "{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics-Assessment.Editor", "Graphics-Assessment.Editor.csproj", "{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics-Assessment.Editor", "Graphics-Assessment.Editor.csproj", "{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics-Assessment.Editor", "Graphics-Assessment.Editor.csproj", "{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphics-Assessment.Editor", "Graphics-Assessment.Editor.csproj", "{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}"
 EndProject
@@ -17,6 +25,26 @@ Global
 		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E6A0B6-E16B-54AA-89A5-B061C343D4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1694A02-0B05-0C7E-DA30-1C103C84FB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -24,8 +52,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {45BD54EA-EA19-48FE-A3D9-FEB4CD064137}
 	EndGlobalSection
 EndGlobal

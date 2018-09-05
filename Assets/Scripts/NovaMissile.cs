@@ -6,12 +6,14 @@ public class NovaMissile : MonoBehaviour
 {
     public ParticleSystem novaImplode, novaExplode;
 
+    ActiveTargets targets;
     MissileLauncher launcher;
     Rigidbody rb;
     MeshRenderer meshRenderer;
 
     void Awake()
     {
+        targets = FindObjectOfType<ActiveTargets>();
         launcher = FindObjectOfType<MissileLauncher>();
         rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
@@ -56,12 +58,33 @@ public class NovaMissile : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
-        if (other.collider != null)
+        if (other.collider != null && other.collider.gameObject.tag != "Player")
         {
             StopCoroutine(TimeBomb());
             Explode();
 
             StartCoroutine(CollisionCleanUp());
+        }
+
+        if (other.collider.gameObject.tag == "Target")
+        {
+            Destroy(other.gameObject);
+
+            targets.activeTargets = GameObject.FindGameObjectsWithTag("Target");
+            targets.activeTargetsText.text = "Active Targets: " + targets.activeTargets.Length.ToString();
+
+            if (targets.activeTargets.Length > 66)
+            {
+                targets.activeTargetsText.color = Color.red;
+            }
+            else if (targets.activeTargets.Length > 33 && targets.activeTargets.Length <= 66)
+            {
+                targets.activeTargetsText.color = Color.yellow;
+            }
+            else if (targets.activeTargets.Length < 33)
+            {
+                targets.activeTargetsText.color = Color.green;
+            }
         }
     }
 }
