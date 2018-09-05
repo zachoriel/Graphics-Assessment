@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     {
         Vector3 dir = new Vector3();
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.Mouse1)))
         {
             dir.z += 1.0f;
         }
