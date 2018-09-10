@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     List<GameObject> prefabList = new List<GameObject>();
-    public GameObject asteroidOne, asteroidTwo, asteroidThree;
+    public GameObject asteroidOne, asteroidTwo, asteroidThree; /*parentObject*/
 
     public Vector3 center, size;
 
@@ -31,6 +31,7 @@ public class ObjectSpawner : MonoBehaviour
         prefabIndex = Random.Range(0, 3);
 
         Instantiate(prefabList[prefabIndex], pos, Quaternion.identity);
+        /*prefabList[prefabIndex].transform.parent = parentObject.transform;*/ // APPARENTLY parenting the transforms of prefabs causes data corruption #RIP
     }
 
     void OnDrawGizmosSelected()

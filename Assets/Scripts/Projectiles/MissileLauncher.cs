@@ -4,30 +4,68 @@ using UnityEngine;
 
 public class MissileLauncher : MonoBehaviour
 {
-    public GameObject missile, firePoint;
-    public Rigidbody missileRB;
+    public GameObject novaeBomb, /*altNovaeBomb,*/ bullet, altBullet, laser, /*altLaser,*/ firePoint;
     public float launchForce = 5f;
+    public bool alternateProjectileColors;
 
 	// Use this for initialization
 	void Start ()
     {
-		if (missile.GetComponent<Rigidbody>() == null)
+        alternateProjectileColors = false;
+    }
+
+    void FireBullet()
+    {
+        Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+    }
+
+    void FireAltBullet()
+    {
+        Instantiate(altBullet, firePoint.transform.position, firePoint.transform.rotation);
+    }
+
+    void FireLaser()
+    {
+        Instantiate(laser, firePoint.transform.position, firePoint.transform.rotation);
+    }
+
+    void FireNovaeBomb()
+    {
+        Instantiate(novaeBomb, firePoint.transform.position, firePoint.transform.rotation);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && alternateProjectileColors == false)
         {
-            missile.AddComponent<Rigidbody>();
+            FireBullet();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1) && alternateProjectileColors == true)
+        {
+            FireAltBullet();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && alternateProjectileColors == false)
+        {
+            FireLaser();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5) && alternateProjectileColors == false)
+        {
+            FireNovaeBomb();
         }
 	}
 
-    void FireMissile()
+    public void ToggleColors()
     {
-        Instantiate(missile, firePoint.transform.position, firePoint.transform.rotation);
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (alternateProjectileColors == false)
         {
-            FireMissile();
+            alternateProjectileColors = true;
         }
-	}
+        else
+        {
+            alternateProjectileColors = false;
+        }
+    }
 }

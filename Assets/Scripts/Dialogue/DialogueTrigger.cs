@@ -63,6 +63,12 @@ public class DialogueTrigger : MonoBehaviour
             ToggleConvo();
             ExitDialogue();
         }
+
+        //If player leaves convo before it's finished, resets timesTalkedToBob. Used so that variable is in sync with convo, which'll start over
+        if (timesTalkedToBob < 8)
+        {
+            timesTalkedToBob = 0;
+        }
     }
 
     // Method to toggle the 'talkingToBob' boolean. Ensures conversation can't be progressed if player isn't engaged with Bob

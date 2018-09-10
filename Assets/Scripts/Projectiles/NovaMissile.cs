@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class NovaMissile : MonoBehaviour
 {
     // Supernovae impact particle effects
@@ -85,22 +86,6 @@ public class NovaMissile : MonoBehaviour
         {
             // Destroys the asteroid
             Destroy(other.gameObject);
-
-            // If the player has destroyed less than 33% of the asteroids, UI is red
-            if (targets.activeTargets.Length > 66)
-            {
-                targets.activeTargetsText.color = Color.red;
-            }
-            // If the player has destroyed between 33% and 66% of the asteroids, UI is yellow
-            else if (targets.activeTargets.Length > 33 && targets.activeTargets.Length <= 66)
-            {
-                targets.activeTargetsText.color = Color.yellow;
-            }
-            // If the player has destroyed greater than 66% of the asteroids, UI is green
-            else if (targets.activeTargets.Length <= 33)
-            {
-                targets.activeTargetsText.color = Color.green;
-            }
         }
     }
 }

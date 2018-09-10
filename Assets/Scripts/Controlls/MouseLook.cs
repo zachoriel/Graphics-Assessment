@@ -18,9 +18,17 @@ public class MouseLook : MonoBehaviour
 
     float ClampAngle(float angle, float from, float to)
     {
-        if (angle > 180) angle = 360 - angle;
+        if (angle > 180)
+        {
+            angle = 360 - angle;
+        }
+
         angle = Mathf.Clamp(angle, from, to);
-        if (angle < 0) angle = 360 + angle;
+
+        if (angle < 0)
+        {
+            angle = 360 + angle;
+        }
 
         return angle;
     }
@@ -45,7 +53,7 @@ public class MouseLook : MonoBehaviour
     public void SetCursorLock(bool value)
     {
         lockCursor = value;
-        if (!lockCursor)
+        if (lockCursor == false)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -54,7 +62,7 @@ public class MouseLook : MonoBehaviour
 
     public void UpdateCursorLock()
     {
-        if (lockCursor)
+        if (lockCursor == true)
         {
             InternalLockUpdate();
         }
@@ -65,10 +73,14 @@ public class MouseLook : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             m_cursorIsLocked = false;
+            speedH = 0f;
+            speedV = 0f;
         }
         else if (Input.GetMouseButtonUp(0))
         {
             m_cursorIsLocked = true;
+            speedH = 5f;
+            speedV = 5f;
         }
 
         if (m_cursorIsLocked)

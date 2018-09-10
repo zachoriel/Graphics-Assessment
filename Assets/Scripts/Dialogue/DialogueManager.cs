@@ -125,6 +125,8 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = "Oh, NOW you wanna talk to me, eh? Well guess what bub, tough shit! You clearly already know what to do since you've already started, " +
             "and I'm not gonna waste my time. Get outta my sight, scrub!";
+
+        trigger.timesTalkedToBob = 9; // So that the next interaction will be Bob ignoring you
     }
 
     // If the player has finished the coversation with Bob and continues attempting to engage with him

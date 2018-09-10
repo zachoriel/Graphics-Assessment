@@ -4,7 +4,8 @@ using System.Collections;
 public class CameraMovement : MonoBehaviour
 {
     [Header("Settings")]
-    public float speed = 50.0f; 
+    public float speed = 50.0f;
+    public float fastSpeed = 100.0f;
 
     [Header("Smoothing")]
     public bool smooth = true;
@@ -74,16 +75,30 @@ public class CameraMovement : MonoBehaviour
 
         if (smooth == true)
         {
-            transform.Translate(lastDir * actSpeed * speed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                transform.Translate(lastDir * actSpeed * fastSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(lastDir * actSpeed * speed * Time.deltaTime);
+            }
         }
         else
         {
-            transform.Translate(dir * speed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                transform.Translate(dir * fastSpeed * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(dir * speed * Time.deltaTime);
+            }
         }
     }
 
-    void OnGUI()
-    {
-        GUILayout.Box("actSpeed: " + actSpeed.ToString());
-    }
+    //void OnGUI()
+    //{
+    //    GUILayout.Box("actSpeed: " + actSpeed.ToString());
+    //}
 }
