@@ -7,10 +7,13 @@ public class Projectile : MonoBehaviour
     public GameObject muzzleFlash;
     public GameObject impactEffect;
     public float speed = 60f;
+    TestyTest dissolve;
 
 	// Use this for initialization
 	void Awake ()
     {
+        dissolve = FindObjectOfType<TestyTest>();
+
         GameObject muzzle = Instantiate(muzzleFlash, transform.position, Quaternion.identity);
         Destroy(muzzle, 2f);
 
@@ -36,7 +39,23 @@ public class Projectile : MonoBehaviour
         {
             GameObject impact = Instantiate(impactEffect, pos, rot);
             Destroy(impact, 5f);
-            Destroy(gameObject);
+            Destroy(gameObject, 13);
+
+            if (other.gameObject.tag == "Target")
+            {
+                StartCoroutine(DissolveAsteroid());
+            }
+        }
+    }
+
+    IEnumerator DissolveAsteroid()
+    {
+        dissolve.lerpTest += 0.1f;
+        yield return new WaitForEndOfFrame();
+
+        if (dissolve.lerpTest == 1.1f)
+        {
+            yield break;
         }
     }
 }
