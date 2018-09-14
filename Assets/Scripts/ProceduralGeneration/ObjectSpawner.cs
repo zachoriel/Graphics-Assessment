@@ -18,7 +18,7 @@ public class ObjectSpawner : MonoBehaviour
         prefabList.Add(asteroidTwo);
         prefabList.Add(asteroidThree);
 
-        for (int objectNumber = 0; objectNumber < 100; objectNumber++)
+        for (int objectNumber = 0; objectNumber < Random.Range(25, 101); objectNumber++)
         {
             SpawnObjects();
         }

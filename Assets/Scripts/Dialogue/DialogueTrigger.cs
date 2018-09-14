@@ -34,14 +34,14 @@ public class DialogueTrigger : MonoBehaviour
         timesTalkedToBob++;
 
         // If player engages with Bob without destroying any asteroids first
-        if (other.gameObject.tag == playerTag && timesTalkedToBob < 10 && targets.activeTargets.Length == 100)
+        if (other.gameObject.tag == playerTag && timesTalkedToBob < 10 && targets.activeTargets.Length == targets.startingTargets)
         {
             ToggleConvo();
             TriggerDialogue();
         }
 
         // If player engages with Bob after destroying any asteroids
-        if (other.gameObject.tag == playerTag && timesTalkedToBob < 10 && targets.activeTargets.Length < 100)
+        if (other.gameObject.tag == playerTag && timesTalkedToBob < 10 && targets.activeTargets.Length < targets.startingTargets)
         {
             ToggleConvo();
             TriggerDismissiveAttitude();

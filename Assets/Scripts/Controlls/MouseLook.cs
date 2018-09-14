@@ -37,14 +37,16 @@ public class MouseLook : MonoBehaviour
     {
         speedH = 5f;
         speedV = 5f;
+
+        minPitch = -90f;
+        maxPitch = 90f;
     }
 
     void Update()
     {
         yaw += Input.GetAxis("Mouse X") * speedH;
         pitch -= Input.GetAxis("Mouse Y") * speedV;
-
-        //pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         transform.eulerAngles = new Vector3(pitch, yaw, 0);
         UpdateCursorLock();

@@ -43,7 +43,8 @@ public class Projectile : MonoBehaviour
 
             if (other.gameObject.tag == "Target")
             {
-                StartCoroutine(DissolveAsteroid());
+                Destroy(gameObject);
+                //StartCoroutine(DissolveAsteroid());
             }
         }
     }

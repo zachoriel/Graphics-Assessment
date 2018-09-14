@@ -13,6 +13,14 @@ public class CameraMovement : MonoBehaviour
     private float actSpeed = 0.0f;
     private Vector3 lastDir = new Vector3();
 
+    [Header("Objects")]
+    public GameObject resetPosition;
+
+    void Start()
+    {
+        resetPosition = GameObject.FindGameObjectWithTag("Reset");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -94,6 +102,11 @@ public class CameraMovement : MonoBehaviour
             {
                 transform.Translate(dir * speed * Time.deltaTime);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameObject.transform.position = resetPosition.transform.position;
         }
     }
 

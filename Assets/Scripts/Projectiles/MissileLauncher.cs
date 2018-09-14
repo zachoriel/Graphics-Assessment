@@ -1,71 +1,126 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MissileLauncher : MonoBehaviour
 {
-    public GameObject novaeBomb, /*altNovaeBomb,*/ bullet, altBullet, laser, /*altLaser,*/ firePoint;
+    ActionBarManager actionBars;
+
+    [Header("Projectiles")]
+    [Tooltip("This should remain empty in the inspector")]
+    public GameObject projectile1;
+    [Tooltip("This should remain empty in the inspector")]
+    public GameObject projectile2;
+
+    [Header("Projectile Objects")]
+    public GameObject bullet;
+    public GameObject altBullet;
+    public GameObject laser;
+    public GameObject altLaser;
+    public GameObject novaeBomb;
+    public GameObject firePoint;
+
+    [Header("Cooldowns")]
+    public Image bulletImage;
+    public Image laserImage;
+    public Image novaeImage;
+
+    [HideInInspector]
     public float launchForce = 5f;
-    public bool alternateProjectileColors;
+
+    private float bulletCooldown;
+    private float bulletStartCD = 1f;
+    private float laserCooldown;
+    private float laserStartCD = 1f;
+    private float novaeCooldown;
+    private float novaeStartCD = 5f;
 
 	// Use this for initialization
 	void Start ()
     {
-        alternateProjectileColors = false;
+        actionBars = FindObjectOfType<ActionBarManager>();
+
+        projectile1 = bullet;
+        projectile2 = laser;
+
+        bulletCooldown = bulletStartCD;
+        laserCooldown = laserStartCD;
+        novaeCooldown = novaeStartCD;
     }
 
     void FireBullet()
     {
-        Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-    }
-
-    void FireAltBullet()
-    {
-        Instantiate(altBullet, firePoint.transform.position, firePoint.transform.rotation);
+        Instantiate(projectile1, firePoint.transform.position, firePoint.transform.rotation);
+        bulletCooldown = 0f;
+        bulletImage.fillAmount = 0f;
     }
 
     void FireLaser()
     {
-        Instantiate(laser, firePoint.transform.position, firePoint.transform.rotation);
+        Instantiate(projectile2, firePoint.transform.position, firePoint.transform.rotation);
+        laserCooldown = 0f;
+        laserImage.fillAmount = 0f;
     }
 
-    void FireNovaeBomb()
+    void FireNovae()
     {
         Instantiate(novaeBomb, firePoint.transform.position, firePoint.transform.rotation);
+        novaeCooldown = 0f;
+        novaeImage.fillAmount = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && alternateProjectileColors == false)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && bulletCooldown >= 1f)
         {
             FireBullet();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1) && alternateProjectileColors == true)
-        {
-            FireAltBullet();
-        }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && alternateProjectileColors == false)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && laserCooldown >= 1f)
         {
             FireLaser();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha5) && alternateProjectileColors == false)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && novaeCooldown >= 5f)
         {
-            FireNovaeBomb();
+            FireNovae();
         }
-	}
 
-    public void ToggleColors()
+        novaeCooldown += 1f * Time.deltaTime;
+        novaeCooldown = Mathf.Clamp(novaeCooldown, 0f, 5f);
+        novaeImage.fillAmount = novaeCooldown / novaeStartCD;
+
+        bulletCooldown += 1f * Time.deltaTime;
+        bulletCooldown = Mathf.Clamp(bulletCooldown, 0f, 1f);
+        bulletImage.fillAmount = bulletCooldown / bulletStartCD;
+
+        laserCooldown += 1f * Time.deltaTime;
+        laserCooldown = Mathf.Clamp(laserCooldown, 0f, 1f);
+        laserImage.fillAmount = laserCooldown / laserStartCD;
+    }
+
+    public void SwapProjectiles()
     {
-        if (alternateProjectileColors == false)
+        if (projectile1 == bullet)
         {
-            alternateProjectileColors = true;
+            projectile1 = altBullet;
         }
-        else
+        else if (projectile1 == altBullet)
         {
-            alternateProjectileColors = false;
+            projectile1 = bullet;
         }
+
+        if (projectile2 == laser)
+        {
+            projectile2 = altLaser;
+        }
+        else if (projectile2 == altLaser)
+        {
+            projectile2 = laser;
+        }
+
+        actionBars.SwapImages();
     }
 }
