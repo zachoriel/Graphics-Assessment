@@ -10,9 +10,10 @@ GameObject:
   - component: {fileID: 423466}
   - component: {fileID: 3396308}
   - component: {fileID: 2330530}
+  - component: {fileID: 114147355228130936}
   m_Layer: 0
   m_Name: test_asteroid2_LOD0
-  m_TagString: Untagged
+  m_TagString: TargetMats
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,6 +29,7 @@ GameObject:
   - component: {fileID: 5499024}
   - component: {fileID: 11421226}
   - component: {fileID: 65662649591787634}
+  - component: {fileID: 114970580347194860}
   m_Layer: 0
   m_Name: Asteroid 2
   m_TagString: Target
@@ -51,7 +53,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &175136
 GameObject:
   m_ObjectHideFlags: 1
@@ -68,7 +70,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &185484
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.87593865, y: -0.3352661, z: -2.5503826}
+  m_LocalPosition: {x: -137.39487, y: 50.693604, z: -300.76758}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 453352}
@@ -319,15 +321,15 @@ LODGroup:
   m_FadeMode: 1
   m_AnimateCrossFading: 1
   m_LODs:
-  - screenRelativeHeight: 0.14747654
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2330530}
-  - screenRelativeHeight: 0.05241651
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2336382}
-  - screenRelativeHeight: 0.014237466
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2329180}
@@ -359,3 +361,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2086223, y: 3.6129003, z: 2.0928457}
   m_Center: {x: 0.03361969, y: 0.3550112, z: 0}
+--- !u!114 &114147355228130936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129cf121ab728ab4fb605d8e2947e1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTest: 0
+  mat: {fileID: 0}
+--- !u!114 &114970580347194860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b541ec03d2a0df4a833b0b0a5bd0d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  baseMat: {fileID: 2100000, guid: 44f9d629006bb76409d3626dd82797c0, type: 2}
+  burnMat: {fileID: 2100000, guid: d6802aed4cdc3b3478f623f0fbcfd791, type: 2}

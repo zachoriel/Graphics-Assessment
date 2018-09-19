@@ -82,7 +82,7 @@ public class NovaMissile : MonoBehaviour
         }
 
         // If the missile object collides with an asteroid target
-        if (other.collider.gameObject.tag == "Target")
+        if (other.collider.gameObject.tag == "Target" || other.collider.gameObject.tag == "TargetMats")
         {
             // Destroys the asteroid
             Destroy(other.gameObject);

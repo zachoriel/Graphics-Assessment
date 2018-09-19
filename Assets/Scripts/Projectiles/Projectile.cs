@@ -7,12 +7,12 @@ public class Projectile : MonoBehaviour
     public GameObject muzzleFlash;
     public GameObject impactEffect;
     public float speed = 60f;
-    TestyTest dissolve;
+    public float damage;
 
 	// Use this for initialization
 	void Awake ()
     {
-        dissolve = FindObjectOfType<TestyTest>();
+        damage = 100f;
 
         GameObject muzzle = Instantiate(muzzleFlash, transform.position, Quaternion.identity);
         Destroy(muzzle, 2f);
@@ -35,6 +35,8 @@ public class Projectile : MonoBehaviour
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
         Vector3 pos = contact.point;
 
+        AsteroidHealth asteroids = other.gameObject.GetComponent<AsteroidHealth>();
+
         if (other.gameObject.tag != "Player")
         {
             GameObject impact = Instantiate(impactEffect, pos, rot);
@@ -43,20 +45,9 @@ public class Projectile : MonoBehaviour
 
             if (other.gameObject.tag == "Target")
             {
+                asteroids.TakeDamage(damage);
                 Destroy(gameObject);
-                //StartCoroutine(DissolveAsteroid());
             }
-        }
-    }
-
-    IEnumerator DissolveAsteroid()
-    {
-        dissolve.lerpTest += 0.1f;
-        yield return new WaitForEndOfFrame();
-
-        if (dissolve.lerpTest == 1.1f)
-        {
-            yield break;
         }
     }
 }

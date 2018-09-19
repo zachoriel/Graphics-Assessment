@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 5428902}
   - component: {fileID: 11467940}
   - component: {fileID: 135179578549467514}
+  - component: {fileID: 114657353637425360}
   m_Layer: 0
   m_Name: Asteroid 3
   m_TagString: Target
@@ -50,7 +51,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &162164
 GameObject:
   m_ObjectHideFlags: 1
@@ -67,7 +68,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &164382
 GameObject:
   m_ObjectHideFlags: 1
@@ -78,9 +79,11 @@ GameObject:
   - component: {fileID: 494542}
   - component: {fileID: 3390286}
   - component: {fileID: 2322484}
+  - component: {fileID: 135592713824087998}
+  - component: {fileID: 114835022489739670}
   m_Layer: 0
   m_Name: test_asteroid3_LOD0
-  m_TagString: Untagged
+  m_TagString: TargetMats
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0364299, y: 1.2403207, z: -3.5075035}
+  m_LocalPosition: {x: -146.49846, y: 55.580173, z: -302.93698}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 481134}
@@ -319,15 +322,15 @@ LODGroup:
   m_FadeMode: 1
   m_AnimateCrossFading: 1
   m_LODs:
-  - screenRelativeHeight: 0.14747654
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2322484}
-  - screenRelativeHeight: 0.05241651
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2342174}
-  - screenRelativeHeight: 0.014237466
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2333210}
@@ -347,12 +350,51 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 130102}
   m_IsPrefabAsset: 1
+--- !u!114 &114657353637425360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b541ec03d2a0df4a833b0b0a5bd0d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  baseMat: {fileID: 2100000, guid: 44f9d629006bb76409d3626dd82797c0, type: 2}
+  burnMat: {fileID: 2100000, guid: d6802aed4cdc3b3478f623f0fbcfd791, type: 2}
+--- !u!114 &114835022489739670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129cf121ab728ab4fb605d8e2947e1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTest: 0
+  mat: {fileID: 0}
 --- !u!135 &135179578549467514
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130102}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 1.7665399
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135592713824087998
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164382}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

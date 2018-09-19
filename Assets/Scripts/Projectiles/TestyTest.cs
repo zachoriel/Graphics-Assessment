@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TestyTest : MonoBehaviour
 {
-
     [Range(0,1.1f)]
     public float lerpTest;
     public Material mat;
@@ -14,7 +13,6 @@ public class TestyTest : MonoBehaviour
         if(mat == null)
         {
             return;
-
         }
         mat.SetFloat("_Threshold", lerpTest);
     }
@@ -23,9 +21,10 @@ public class TestyTest : MonoBehaviour
     {
         if (mat == null)
         {
+            mat = GetComponent<Renderer>().material;
             return;
-
         }
         mat.SetFloat("_Threshold", lerpTest);
+        lerpTest = Mathf.Clamp(lerpTest, 0.3f, 1.1f);
     }
 }
