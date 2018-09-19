@@ -31,7 +31,7 @@ public class ObjectSpawner : MonoBehaviour
         prefabIndex = Random.Range(0, 3);
 
         Instantiate(prefabList[prefabIndex], pos, Quaternion.identity);
-        /*prefabList[prefabIndex].transform.parent = parentObject.transform;*/ // APPARENTLY parenting the transforms of prefabs causes data corruption #RIP
+        /*prefabList[prefabIndex].transform.parent = asteroidParent.transform;*/ // APPARENTLY parenting the transforms of prefabs causes data corruption #RIP
     }
 
     void OnDrawGizmosSelected()
