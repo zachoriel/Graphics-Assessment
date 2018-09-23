@@ -13,6 +13,9 @@ public class ObjectSpawner : MonoBehaviour
 
     public bool inMenu;
 
+    public AudioSource gameMusic;
+    public AudioClip combatMusic, baseMusic;
+
     int prefabIndex;
 
     [SerializeField] int totalAsteroids;
@@ -34,10 +37,15 @@ public class ObjectSpawner : MonoBehaviour
         {
             SpawnObjects();
         }
+
+        gameMusic.clip = baseMusic;
+        gameMusic.Play();
 	}
 
     public void GenerateEnemies()
     {
+        StartCoroutine(PlayMusic());
+
         for (int enemyNumber = 0; enemyNumber < totalEnemies; enemyNumber++)
         {
             SpawnEnemies();
@@ -64,5 +72,13 @@ public class ObjectSpawner : MonoBehaviour
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(center, size);
+    }
+
+    IEnumerator PlayMusic()
+    {
+        yield return new WaitForSeconds(1f);
+        gameMusic.clip = combatMusic;
+        gameMusic.Play();
+        yield break;
     }
 }

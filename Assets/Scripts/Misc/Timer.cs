@@ -9,19 +9,22 @@ public class Timer : MonoBehaviour
     ObjectSpawner spawner;
     [SerializeField] float time;
     GameObject[] enemies;
+    bool enemiesAttacking;
 
 	void Awake ()
     {
         timerText = GetComponent<Text>();
         spawner = FindObjectOfType<ObjectSpawner>();
+        enemiesAttacking = false;
 
         StartCoroutine(Countdown());
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (time > 0 )
+        if (time > 0)
         {
             time -= Time.deltaTime;
             var minutes = Mathf.Floor(time / 60);
@@ -40,16 +43,23 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                Destroy(timerText);
+                KillTimer();
                 return;
             }
-        }       
+        }  
 	}
 
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(299.9f);
+        yield return new WaitForSeconds(419.9f);
         spawner.GenerateEnemies();
+        enemiesAttacking = true;
         yield break;
+    }
+
+    void KillTimer()
+    {
+        enemiesAttacking = false;
+        Destroy(timerText);
     }
 }
