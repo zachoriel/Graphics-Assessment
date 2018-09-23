@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MissileLauncher : MonoBehaviour
 {
     ActionBarManager actionBars;
+    Laser lineLaser;
 
     [Header("Projectiles")]
     [Tooltip("This should remain empty in the inspector")]
@@ -20,6 +21,8 @@ public class MissileLauncher : MonoBehaviour
     public GameObject altLaser;
     public GameObject novaeBomb;
     public GameObject firePoint;
+    public GameObject firePoint2;
+    public GameObject firePoint3;
 
     [Header("Cooldowns")]
     public Image bulletImage;
@@ -40,6 +43,7 @@ public class MissileLauncher : MonoBehaviour
 	void Start ()
     {
         actionBars = FindObjectOfType<ActionBarManager>();
+        lineLaser = GetComponent<Laser>();
 
         projectile1 = bullet;
         projectile2 = laser;
@@ -52,6 +56,7 @@ public class MissileLauncher : MonoBehaviour
     void FireBullet()
     {
         Instantiate(projectile1, firePoint.transform.position, firePoint.transform.rotation);
+        Instantiate(projectile1, firePoint2.transform.position, firePoint2.transform.rotation);
         bulletCooldown = 0f;
         bulletImage.fillAmount = 0f;
     }
@@ -59,13 +64,14 @@ public class MissileLauncher : MonoBehaviour
     void FireLaser()
     {
         Instantiate(projectile2, firePoint.transform.position, firePoint.transform.rotation);
+        Instantiate(projectile2, firePoint2.transform.position, firePoint2.transform.rotation);
         laserCooldown = 0f;
         laserImage.fillAmount = 0f;
     }
 
     void FireNovae()
     {
-        Instantiate(novaeBomb, firePoint.transform.position, firePoint.transform.rotation);
+        Instantiate(novaeBomb, firePoint3.transform.position, firePoint3.transform.rotation);
         novaeCooldown = 0f;
         novaeImage.fillAmount = 0f;
     }

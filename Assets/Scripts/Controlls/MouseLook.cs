@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// For first person controlls
 public class MouseLook : MonoBehaviour
 {
     public float speedH;

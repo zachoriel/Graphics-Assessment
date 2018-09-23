@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// For 1st person controlls
 public class CameraMovement : MonoBehaviour
 {
     [Header("Settings")]

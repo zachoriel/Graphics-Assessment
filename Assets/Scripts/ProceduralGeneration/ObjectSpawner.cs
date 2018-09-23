@@ -5,11 +5,18 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     List<GameObject> prefabList = new List<GameObject>();
-    public GameObject asteroidOne, asteroidTwo, asteroidThree; /*parentObject*/
+    public GameObject asteroidOne, asteroidTwo, asteroidThree, asteroidParent;
+
+    public GameObject enemy, enemyParent;
 
     public Vector3 center, size;
 
+    public bool inMenu;
+
     int prefabIndex;
+
+    [SerializeField] int totalAsteroids;
+    [SerializeField] int totalEnemies;
 
 	// Use this for initialization
 	void Start ()
@@ -18,11 +25,24 @@ public class ObjectSpawner : MonoBehaviour
         prefabList.Add(asteroidTwo);
         prefabList.Add(asteroidThree);
 
-        for (int objectNumber = 0; objectNumber < Random.Range(25, 101); objectNumber++)
+        if (inMenu == false)
+        {
+            totalAsteroids = Random.Range(3, 101);
+        }
+
+        for (int objectNumber = 0; objectNumber < totalAsteroids; objectNumber++)
         {
             SpawnObjects();
         }
 	}
+
+    public void GenerateEnemies()
+    {
+        for (int enemyNumber = 0; enemyNumber < totalEnemies; enemyNumber++)
+        {
+            SpawnEnemies();
+        }
+    }
 
     public void SpawnObjects()
     {
@@ -30,8 +50,14 @@ public class ObjectSpawner : MonoBehaviour
 
         prefabIndex = Random.Range(0, 3);
 
-        Instantiate(prefabList[prefabIndex], pos, Quaternion.identity);
-        /*prefabList[prefabIndex].transform.parent = asteroidParent.transform;*/ // APPARENTLY parenting the transforms of prefabs causes data corruption #RIP
+        Instantiate(prefabList[prefabIndex], pos, Quaternion.identity, asteroidParent.transform);
+    }
+
+    public void SpawnEnemies()
+    {
+        Vector3 pos = center + new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-size.z / 2, size.z / 2));
+
+        Instantiate(enemy, pos, Quaternion.identity, enemyParent.transform);
     }
 
     void OnDrawGizmosSelected()

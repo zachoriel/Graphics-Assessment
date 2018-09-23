@@ -145,7 +145,7 @@ public class DialogueManager : MonoBehaviour
 
         if (trigger.timesTalkedToBob == 10)
         {
-            dialogueText.text = "Are you fucking dense, m8? I already said I'm done talking to you. SCRAM!";
+            dialogueText.text = "Are you dense, m8? I'm done talking to you, jabroni. SCRAM!";
         }
         else if (trigger.timesTalkedToBob >= 11 && trigger.timesTalkedToBob < 15)
         {

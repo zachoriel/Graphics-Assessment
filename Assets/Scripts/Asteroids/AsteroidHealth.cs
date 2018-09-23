@@ -8,16 +8,12 @@ public class AsteroidHealth : MonoBehaviour
 {
     public float health;
     private float startHealth = 100;
-    public Material baseMat;
-    public Material burnMat;
     TestyTest dissolve;
 
 	// Use this for initialization
 	void Start ()
     {
         health = startHealth;
-
-        GetComponentInChildren<Renderer>().material = baseMat;
 
         dissolve = GetComponentInChildren<TestyTest>();
 	}

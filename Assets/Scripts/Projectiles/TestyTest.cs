@@ -25,6 +25,14 @@ public class TestyTest : MonoBehaviour
             return;
         }
         mat.SetFloat("_Threshold", lerpTest);
-        lerpTest = Mathf.Clamp(lerpTest, 0.3f, 1.1f);
+
+        if (gameObject.tag == "TargetMats")
+        {
+            lerpTest = Mathf.Clamp(lerpTest, 0.3f, 1.1f);
+        }
+        else
+        {
+            lerpTest = Mathf.Clamp(lerpTest, 0.0f, 1.1f);
+        }
     }
 }

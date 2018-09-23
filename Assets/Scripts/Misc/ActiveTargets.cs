@@ -6,6 +6,9 @@ using TMPro;
 
 public class ActiveTargets : MonoBehaviour
 {
+    SceneFader fader;
+    [SerializeField] string menu;
+
     // UI stuff
     [Header("Targets UI Element")]
     public TextMeshProUGUI activeTargetsText;
@@ -18,9 +21,14 @@ public class ActiveTargets : MonoBehaviour
 
     private double twoThirdsOfTargets, oneThirdOfTargets;
 
+    [HideInInspector]
+    public bool completedGame = false;
+
 	// Use this for initialization
 	void Start ()
     {
+        fader = FindObjectOfType<SceneFader>();
+
         activeTargets = GameObject.FindGameObjectsWithTag("Target");
         startingTargets = activeTargets.Length;
         twoThirdsOfTargets = startingTargets * 0.66;
@@ -48,6 +56,12 @@ public class ActiveTargets : MonoBehaviour
         else if (activeTargets.Length <= oneThirdOfTargets)
         {
             activeTargetsText.color = Color.green;
+        }
+        
+        if (activeTargets.Length == 0)
+        {
+            completedGame = true;
+            fader.FadeTo(menu);
         }
     }
 }
