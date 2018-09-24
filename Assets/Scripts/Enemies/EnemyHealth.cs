@@ -32,7 +32,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0)
         {
-            dissolve.lerpTest += 0.2f * Time.deltaTime;
+            dissolve.lerpTest += 0.55f * Time.deltaTime;
 
             if (dissolve.lerpTest >= 1.1f)
             {

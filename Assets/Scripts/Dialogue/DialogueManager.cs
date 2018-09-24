@@ -157,7 +157,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (trigger.timesTalkedToBob == 20)
         {
-            Application.ForceCrash(1); // ;)
+            Application.ForceCrash(0); // ;)
         }
     }
 
@@ -186,7 +186,7 @@ public class DialogueManager : MonoBehaviour
         // Conclusion of crash timer event. Crashes the program
         if (crashTimer <= 0)
         {
-            Application.ForceCrash(1); // ;)
+            Application.ForceCrash(0); // ;)
         }
 
         timerText.text = "Crash Timer: " + Mathf.RoundToInt(crashTimer).ToString();
