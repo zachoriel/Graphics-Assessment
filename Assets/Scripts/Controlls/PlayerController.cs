@@ -35,13 +35,13 @@ public class PlayerController : MonoBehaviour
     void Thrust()
     {
         // If input is detected & going normal speed
-        if (Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.W))
         {
             shipTransform.position += shipTransform.forward * movementSpeed * Time.deltaTime;
         }
 
         // If input is detected and going fast
-        if (Input.GetKey(KeyCode.Mouse0) && Input.GetKey(KeyCode.Mouse1) && Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
         {
             shipTransform.position += shipTransform.forward * fastMovementSpeed * Time.deltaTime;
         }
