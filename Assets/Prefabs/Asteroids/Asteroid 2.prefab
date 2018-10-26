@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 11421226}
   - component: {fileID: 65662649591787634}
   - component: {fileID: 114970580347194860}
+  - component: {fileID: 114568851135244858}
   m_Layer: 0
   m_Name: Asteroid 2
   m_TagString: Target
@@ -308,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a718c138b20419b499c3d92b17e6ff7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tumble: 0.25
+  speed: 25
 --- !u!205 &20511958
 LODGroup:
   m_ObjectHideFlags: 1
@@ -374,6 +375,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpTest: 0
   mat: {fileID: 0}
+--- !u!114 &114568851135244858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114970580347194860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,5 +398,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  baseMat: {fileID: 2100000, guid: 44f9d629006bb76409d3626dd82797c0, type: 2}
-  burnMat: {fileID: 2100000, guid: d6802aed4cdc3b3478f623f0fbcfd791, type: 2}

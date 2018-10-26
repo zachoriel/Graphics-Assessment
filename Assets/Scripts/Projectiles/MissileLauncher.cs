@@ -79,17 +79,17 @@ public class MissileLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && bulletCooldown >= 1f)
+        if (Input.GetButtonDown("Fire1") && bulletCooldown >= 1f)
         {
             FireBullet();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && laserCooldown >= 1f)
+        if (Input.GetButtonDown("Fire2") && laserCooldown >= 1f)
         {
             FireLaser();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && novaeCooldown >= 5f)
+        if (Input.GetKeyDown(KeyCode.Space) && novaeCooldown >= 5f)
         {
             FireNovae();
         }

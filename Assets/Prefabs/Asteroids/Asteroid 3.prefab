@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 11467940}
   - component: {fileID: 135179578549467514}
   - component: {fileID: 114657353637425360}
+  - component: {fileID: 114864019505209460}
   m_Layer: 0
   m_Name: Asteroid 3
   m_TagString: Target
@@ -309,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a718c138b20419b499c3d92b17e6ff7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tumble: 0.25
+  speed: 25
 --- !u!205 &20567912
 LODGroup:
   m_ObjectHideFlags: 1
@@ -362,8 +363,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  baseMat: {fileID: 2100000, guid: 44f9d629006bb76409d3626dd82797c0, type: 2}
-  burnMat: {fileID: 2100000, guid: d6802aed4cdc3b3478f623f0fbcfd791, type: 2}
 --- !u!114 &114835022489739670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,6 +376,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpTest: 0
   mat: {fileID: 0}
+--- !u!114 &114864019505209460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135179578549467514
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -385,7 +395,7 @@ SphereCollider:
   m_GameObject: {fileID: 130102}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.7665399
   m_Center: {x: 0, y: 0, z: 0}

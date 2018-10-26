@@ -28,7 +28,7 @@ public class ObjectSpawner : MonoBehaviour
         prefabList.Add(asteroidTwo);
         prefabList.Add(asteroidThree);
 
-        if (inMenu == false)
+        if (!inMenu)
         {
             totalAsteroids = Random.Range(3, 101);
         }
