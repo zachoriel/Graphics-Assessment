@@ -3,10 +3,10 @@ using System.Collections;
 
 public class InfiniteStarfield : MonoBehaviour
 {
-    private Transform tx;
-    private ParticleSystem.Particle[] points;
+    Transform tx;
+    ParticleSystem.Particle[] points;
 
-    public int starsMax = 100;
+    public int maxStars = 100;
     public float starSize = 1;
     public float starDistance = 10;
     public float starClipDistance = 1;
@@ -16,16 +16,16 @@ public class InfiniteStarfield : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        tx = transform;
+        tx = base.transform;
         starDistanceSqr = starDistance * starDistance;
         starClipDistanceSqr = starClipDistance * starClipDistance;
     }
 
     private void CreateStars()
     {
-        points = new ParticleSystem.Particle[starsMax];
+        points = new ParticleSystem.Particle[maxStars];
 
-        for (int i = 0; i < starsMax; i++)
+        for (int i = 0; i < maxStars; i++)
         {
             points[i].position = Random.insideUnitSphere * starDistance + tx.position;
             points[i].startColor = new Color(Random.value, Random.value, Random.value, 1);
@@ -36,9 +36,12 @@ public class InfiniteStarfield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (points == null) CreateStars();
+        if (points == null)
+        {
+            CreateStars();
+        }
 
-        for (int i = 0; i < starsMax; i++)
+        for (int i = 0; i < maxStars; i++)
         {
 
             if ((points[i].position - tx.position).sqrMagnitude > starDistanceSqr)

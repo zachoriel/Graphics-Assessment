@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowCam : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField] Vector3 defaultPosition = new Vector3(0f, -28.8f, -34.6f);
+    [SerializeField] Vector3 defaultPosition = new Vector3(0f, 0f, 0f);
     [SerializeField] float distanceDamp = 10f;
 
     Transform myTransform;
@@ -15,7 +15,7 @@ public class FollowCam : MonoBehaviour
 	void Awake ()
     {
         myTransform = GetComponent<Transform>();
-	}
+    }
 	
 	void LateUpdate ()
     {

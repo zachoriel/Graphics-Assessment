@@ -16,8 +16,6 @@ public class Projectile : MonoBehaviour
 
         GameObject muzzle = Instantiate(muzzleFlash, transform.position, Quaternion.identity);
         Destroy(muzzle, 2f);
-
-        Destroy(gameObject, 20f);
     }
 	
 	// Update is called once per frame
@@ -25,7 +23,7 @@ public class Projectile : MonoBehaviour
     {
 		if (speed > 0)
         {
-            transform.position += (transform.forward) * (speed * Time.deltaTime);
+            transform.position += transform.forward * speed * Time.deltaTime;
         }
 	}
 

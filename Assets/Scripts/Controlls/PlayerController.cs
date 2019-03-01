@@ -5,15 +5,28 @@ using UnityEngine;
 // For 3rd person controlls
 public class PlayerController : MonoBehaviour
 {
+    Transform shipTransform;
+
     [SerializeField] float movementSpeed = 50f;
     [SerializeField] float turnSpeed = 60f;
     [SerializeField] float fastMovementSpeed = 100f;
+    float deltaTime;
 
-    Transform shipTransform;
+    Space worldSpace = Space.World;
+    string horizontal = "Horizontal";
+    string pitch = "Pitch";
+    string roll = "Roll";
+    string vertical = "Vertical";
+
 
 	void Awake ()
     {
-        shipTransform = GetComponent<Transform>();
+        if (shipTransform == null)
+        {
+            shipTransform = GetComponent<Transform>();
+        }
+
+        deltaTime = Time.deltaTime;
 	}
 	
 	// Update is called once per frame
@@ -25,25 +38,28 @@ public class PlayerController : MonoBehaviour
 
     void Turn()
     {
-        float yaw = turnSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
-        float pitch = turnSpeed * Time.deltaTime * Input.GetAxis("Pitch");
-        float roll = turnSpeed * Time.deltaTime * Input.GetAxis("Roll");
+        float _yaw = turnSpeed * deltaTime * Input.GetAxis(horizontal);
+        float _pitch = turnSpeed * deltaTime * Input.GetAxis(pitch);
+        float _roll = turnSpeed * deltaTime * Input.GetAxis(roll);
 
-        shipTransform.Rotate(pitch, yaw, roll);
+        shipTransform.Rotate(_pitch, _yaw, _roll);
     }
 
     void Thrust()
     {
+        float _vert = Input.GetAxisRaw(vertical);
+        bool _fastVert = Input.GetKey(KeyCode.LeftShift);
+
         // If input is detected & going normal speed
-        if (Input.GetKey(KeyCode.W))
+        if (_vert > 0)
         {
-            shipTransform.position += shipTransform.forward * movementSpeed * Time.deltaTime;
+            shipTransform.position += shipTransform.forward * movementSpeed * deltaTime;
         }
 
         // If input is detected and going fast
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+        if ((_vert > 0) && _fastVert)
         {
-            shipTransform.position += shipTransform.forward * fastMovementSpeed * Time.deltaTime;
+            shipTransform.position += shipTransform.forward * fastMovementSpeed * deltaTime;
         }
     }
 }

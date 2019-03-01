@@ -41,8 +41,8 @@ InputManager:
     m_Name: Pitch
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: down
-    positiveButton: up
+    negativeButton: 3
+    positiveButton: 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
